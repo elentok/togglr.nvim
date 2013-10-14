@@ -14,6 +14,7 @@ let g:togglr_values = {
       \ "yes": "no",
       \ "on": "off",
       \ "enabled": "disabled",
+      \ "enable": "disable",
       \ "left": "right",
       \ "top": "bottom",
       \ "should": "should_not",
