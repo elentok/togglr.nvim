@@ -15,7 +15,6 @@ Customizing
 
   ```vim
   let g:togglr_key = 'put-key-here'
-
   ```
 
 * Add values to toggle between:
