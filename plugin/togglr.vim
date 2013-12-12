@@ -22,7 +22,9 @@ let g:togglr_values = {
       \ "border-left": "border-right",
       \ "border-top": "border-bottom",
       \ "margin-left": "margin-right",
-      \ "margin-top": "margin-bottom"
+      \ "margin-top": "margin-bottom",
+      \ "padding-left": "padding-right",
+      \ "padding-top": "padding-bottom"
       \}
 
 " Functions {{{1
