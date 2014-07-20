@@ -24,7 +24,8 @@ let g:togglr_values = {
       \ "margin-left": "margin-right",
       \ "margin-top": "margin-bottom",
       \ "padding-left": "padding-right",
-      \ "padding-top": "padding-bottom"
+      \ "padding-top": "padding-bottom",
+      \ "addClass": "removeClass"
       \}
 
 " Functions {{{1
