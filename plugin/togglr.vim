@@ -1,11 +1,13 @@
 " vim: foldmethod=marker
 
-" Keys {{{1
+" Settings {{{1
 if !exists('g:togglr_key')
   let g:togglr_key = '<Leader>tw'
 endif
 
-exec 'noremap ' . g:togglr_key . ' :call togglr#toggle()<cr>'
+if !exists('g:togglr_register')
+  let g:togglr_register = 't'
+endif
 
 " Values {{{1
 
@@ -38,16 +40,17 @@ endfor
 
 " Functions {{{1
 
-func! togglr#toggle()
-  let value = expand("<cword>")
-  if has_key(s:togglr_values, value)
-    let other_value = s:togglr_values[value]
-    exec "normal ciw" . other_value
-  end
-endfunc
-
 func! togglr#add(value1, value2)
   let s:togglr_values[a:value1] = a:value2
   let s:togglr_values[a:value2] = a:value1
 endfunc
 
+func! togglr#toggle()
+  let value = expand("<cword>")
+  if has_key(s:togglr_values, value)
+    let other_value = s:togglr_values[value]
+    exec "normal \"" . g:togglr_register . "ciw" . other_value
+  end
+endfunc
+
+exec 'noremap ' . g:togglr_key . ' :call togglr#toggle()<cr>'
