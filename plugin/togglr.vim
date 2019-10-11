@@ -29,17 +29,14 @@ let s:togglr_values = {
       \ "addClass": "removeClass"
       \}
 
+" add the reverse mappings to the hash
+for [key, value] in items(s:togglr_values)
+  if !has_key(s:togglr_values, value)
+    let s:togglr_values[value] = key
+  end
+endfor
+
 " Functions {{{1
-
-func! togglr#refresh()
-  for [key, value] in items(s:togglr_values)
-    if !has_key(s:togglr_values, value)
-      let s:togglr_values[value] = key
-    end
-  endfor
-endfunc
-
-call togglr#refresh()
 
 func! togglr#toggle()
   let value = expand("<cword>")
