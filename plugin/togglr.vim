@@ -49,7 +49,7 @@ func! togglr#toggle()
   let value = expand("<cword>")
   if has_key(s:togglr_values, value)
     let other_value = s:togglr_values[value]
-    exec "normal \"" . g:togglr_register . "ciw" . other_value
+    exec "normal! \"" . g:togglr_register . "ciw" . other_value
   end
 endfunc
 
