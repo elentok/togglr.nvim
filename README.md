@@ -10,22 +10,39 @@ Togglr is a vim plugin that toggles values (by pressing `<Leader>tw` in normal m
 - margin-left &harr; margin-right
 - etc...
 
-## Customizing
+## Installation
 
-- Set the toggle key:
+Using [packer](https://github.com/wbthomason/packer.nvim):
 
-  ```vim
-  let g:togglr_key = 'put-key-here'
-  ```
+```lua
+use {
+  'elentok/togglr.vim',
+  config = function()
+    require('togglr').setup()
+  end
+}
+```
 
-- Set the default register:
+Customization:
 
-  ```vim
-  let g:togglr_register = 't'
-  ```
+```lua
+require('togglr').setup({
 
-- Add your own values to toggle between:
+  -- Specify key map (set to "false" to disable)
+  key = "<Leader>tw",
 
-  ```vim
-  call togglr#add('value1', 'value2')
-  ```
+  -- Specify which register to use (to avoid overriding the default register)
+  register = "t",
+
+  -- Add custom sets to values to toggle between
+  values = {
+    ["value"] = "opposite-value",
+  },
+})
+```
+
+If after the initial setup you want to add more values:
+
+```lua
+require('togglr').add('value', 'opposite-value')
+```
