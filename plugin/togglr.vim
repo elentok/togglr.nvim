@@ -1,5 +1,9 @@
 " vim: foldmethod=marker
 
+if has('nvim')
+  finish
+end
+
 " Settings {{{1
 if !exists('g:togglr_key')
   let g:togglr_key = '<Leader>tw'

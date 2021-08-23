@@ -14,18 +14,18 @@ Togglr is a vim plugin that toggles values (by pressing `<Leader>tw` in normal m
 
 - Set the toggle key:
 
-  ```vim
-  let g:togglr_key = 'put-key-here'
+  ```lua
+  vim.g.togglr_key = 'put-key-here'
   ```
 
 - Set the default register:
 
-  ```vim
-  let g:togglr_register = 't'
+  ```lua
+  vim.g.togglr_register = 't'
   ```
 
 - Add your own values to toggle between:
 
-  ```vim
+  ```lua
   call togglr#add('value1', 'value2')
   ```
