@@ -30,7 +30,7 @@ function M.setup(opts)
   config = vim.tbl_deep_extend("force", config, opts or {})
 
   if config.key then
-    vim.cmd("noremap " .. opts.key ..
+    vim.cmd("noremap " .. config.key ..
                 " :lua require('togglr').toggle_word()<cr>")
   end
 
