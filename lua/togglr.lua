@@ -22,16 +22,18 @@ local config = {
     ["margin-top"] = "margin-bottom",
     ["padding-left"] = "padding-right",
     ["padding-top"] = "padding-bottom",
-    ["addClass"] = "removeClass"
-  }
+    ["addClass"] = "removeClass",
+    ["back"] = "fwd",
+    ["up"] = "down",
+    ["+"] = "-",
+  },
 }
 
 function M.setup(opts)
   config = vim.tbl_deep_extend("force", config, opts or {})
 
   if config.key then
-    vim.cmd("noremap " .. config.key ..
-                " :lua require('togglr').toggle_word()<cr>")
+    vim.cmd("noremap " .. config.key .. " :lua require('togglr').toggle_word()<cr>")
   end
 
   -- add the reverse mappings to the hash
@@ -44,7 +46,7 @@ function M.toggle_word()
   local value = vim.fn.expand("<cword>")
   local other_value = config.values[value]
   if other_value ~= nil then
-    vim.cmd("normal! \"" .. config.register .. "ciw" .. other_value)
+    vim.cmd('normal! "' .. config.register .. "ciw" .. other_value)
   end
 end
 
