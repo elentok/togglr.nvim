@@ -33,7 +33,7 @@ function M.setup(opts)
   config = vim.tbl_deep_extend("force", config, opts or {})
 
   if config.key then
-    vim.cmd("noremap " .. config.key .. " :lua require('togglr').toggle_word()<cr>")
+    vim.keymap.set("n", config.key, M.toggle_word)
   end
 
   -- add the reverse mappings to the hash
