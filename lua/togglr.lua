@@ -23,6 +23,7 @@ local config = {
     ["padding-left"] = "padding-right",
     ["padding-top"] = "padding-bottom",
     ["addClass"] = "removeClass",
+    ["column"] = "row",
     ["back"] = "fwd",
     ["up"] = "down",
     ["+"] = "-",
