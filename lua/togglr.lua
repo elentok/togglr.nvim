@@ -27,6 +27,7 @@ local config = {
     ["column"] = "row",
     ["back"] = "fwd",
     ["up"] = "down",
+    ["const"] = "let",
     ["+"] = "-",
   },
 }
@@ -38,9 +39,14 @@ function M.setup(opts)
     vim.keymap.set("n", config.key, M.toggle_word)
   end
 
-  -- add the reverse mappings to the hash
+  -- add the reverse + uppercase mappings to the hash
   for key, value in pairs(config.values) do
     config.values[value] = key
+
+    local upper_key = key:upper()
+    local upper_value = value:upper()
+    config.values[upper_key] = upper_value
+    config.values[upper_value] = upper_key
   end
 end
 
