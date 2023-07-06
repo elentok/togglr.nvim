@@ -4,6 +4,7 @@ local config = {
   -- Set "key" to false when calling "setup()" in order to disable the
   -- keymapping.
   key = "<Leader>tw",
+  debug = false,
   register = "t",
   values = {
     ["true"] = "false",
@@ -45,7 +46,13 @@ end
 
 function M.toggle_word()
   local value = vim.fn.expand("<cword>")
+  if config.debug then
+    print("Toggle world from [" .. value .. "]")
+  end
   local other_value = config.values[value]
+  if config.debug then
+    print("Toggle world to [" .. other_value .. "]")
+  end
   if other_value ~= nil then
     vim.cmd('normal! "' .. config.register .. "ciw" .. other_value)
   end
@@ -54,6 +61,20 @@ end
 function M.add(value1, value2)
   config.values[value1] = value2
   config.values[value2] = value1
+end
+
+function M.print_config()
+  print("Togglr config:", vim.inspect(config))
+end
+
+function M.debug_on()
+  config.debug = true
+  print("Togglr debug mode enabled")
+end
+
+function M.debug_off()
+  config.debug = false
+  print("Togglr debug mode disabled")
 end
 
 return M
