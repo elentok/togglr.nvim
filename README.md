@@ -12,7 +12,7 @@ Togglr is a Neovim plugin that toggles boolean values (by pressing `<Leader>tw` 
 
 ## Installation
 
-Using Lazy:
+Using [Lazy](https://github.com/folke/lazy.nvim):
 
 ```lua
 {
