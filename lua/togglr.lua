@@ -1,8 +1,8 @@
 local M = {}
 
+---@type { key: string|boolean, debug: boolean, register: string, values: { [string]: string}}
 local config = {
-  -- Set "key" to false when calling "setup()" in order to disable the
-  -- keymapping.
+  -- Set "key" to false when calling in order to disable the keymapping.
   key = "<Leader>tw",
   debug = false,
   register = "t",
@@ -35,18 +35,19 @@ local config = {
 function M.setup(opts)
   config = vim.tbl_deep_extend("force", config, opts or {})
 
-  if config.key then
-    vim.keymap.set("n", config.key, M.toggle_word)
+  local key = config.key
+  if type(key) == "string" then
+    vim.keymap.set("n", key, M.toggle_word, { desc = "Toggle word" })
   end
 
   -- add the reverse + uppercase mappings to the hash
-  for key, value in pairs(config.values) do
-    config.values[value] = key
+  for value, opposite in pairs(config.values) do
+    config.values[opposite] = value
 
-    local upper_key = key:upper()
     local upper_value = value:upper()
-    config.values[upper_key] = upper_value
-    config.values[upper_value] = upper_key
+    local upper_opposite = opposite:upper()
+    config.values[upper_value] = upper_opposite
+    config.values[upper_opposite] = upper_value
   end
 end
 
