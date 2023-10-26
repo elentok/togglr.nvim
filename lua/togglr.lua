@@ -32,6 +32,12 @@ local config = {
   },
 }
 
+local function log(message)
+  if config.debug then
+    print("[TOGGLR] " .. message)
+  end
+end
+
 function M.setup(opts)
   config = vim.tbl_deep_extend("force", config, opts or {})
 
@@ -53,15 +59,13 @@ end
 
 function M.toggle_word()
   local value = vim.fn.expand("<cword>")
-  if config.debug then
-    print("Toggle world from [" .. value .. "]")
-  end
+  log("Toggle world from [" .. value .. "]")
   local other_value = config.values[value]
-  if config.debug then
-    print("Toggle world to [" .. other_value .. "]")
-  end
   if other_value ~= nil then
+    log("Toggle world to [" .. other_value .. "]")
     vim.cmd('normal! "' .. config.register .. "ciw" .. other_value)
+  else
+    log("Did not find an opposite value for '" .. value .. "'")
   end
 end
 
